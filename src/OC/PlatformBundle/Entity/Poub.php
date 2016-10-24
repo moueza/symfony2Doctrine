@@ -66,7 +66,31 @@ class Poub
       /**
      * 
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
          */
     private $poub1;
+
+    /**
+     * Set poub1
+     *
+     * @param integer $poub1
+     *
+     * @return Poub
+     */
+    public function setPoub1($poub1)
+    {
+        $this->poub1 = $poub1;
+
+        return $this;
+    }
+
+    /**
+     * Get poub1
+     *
+     * @return integer
+     */
+    public function getPoub1()
+    {
+        return $this->poub1;
+    }
 }
