@@ -1,0 +1,25 @@
+
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+
+{% block body %}
+
+
+
+    {% for ap in applicationsLimited %}
+        <p>CANDIDATURE
+                       {{ ap.content }}
+        </p>
+
+
+        <p>ANNONCE
+            
+            {{ap.advert.content}}
+
+       </p>
+     <BR><BR> 
+    {% endfor %}
+
+
+
+{% endblock %}

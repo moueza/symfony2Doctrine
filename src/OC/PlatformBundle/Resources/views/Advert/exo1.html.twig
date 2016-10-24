@@ -1,0 +1,23 @@
+
+
+{% block body %}
+
+
+
+    <p>
+        Taille des annonce = {{objectCategoriesBelongs|length}}
+      <BR>  Contenu d une annonce
+        {% for ad in objectCategoriesBelongs %}
+
+            {{ ad.content }}
+
+        {% endfor %}
+
+
+
+    <p>
+        Valeur m =
+        {{m}}
+
+    </p>
+{% endblock %}
