@@ -381,9 +381,33 @@ private $updatedAt;
         return $this->nbApplications;
     }
 
-   /**@var string
+   /**
      @ORM\Column(name="email", type="string")*/
-    private $emaill3;
+    private $email;
 //https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony/les-evenements-et-extensions-doctrine-1
     
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Advert
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 }

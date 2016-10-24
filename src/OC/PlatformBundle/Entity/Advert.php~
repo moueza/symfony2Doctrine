@@ -381,9 +381,9 @@ private $updatedAt;
         return $this->nbApplications;
     }
 
-   /**@var string
+   /**
      @ORM\Column(name="email", type="string")*/
-    private $emaill3;
+    private $email;
 //https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony/les-evenements-et-extensions-doctrine-1
     
 }
