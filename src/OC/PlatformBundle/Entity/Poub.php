@@ -62,4 +62,11 @@ class Poub
     {
         return $this->mem;
     }
+    
+      /**
+     * 
+     *
+     * @ORM\Column(name="id", type="integer")
+         */
+    private $poub1;
 }
