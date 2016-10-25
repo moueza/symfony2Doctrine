@@ -11,6 +11,7 @@ use OC\PlatformBundle\Entity\Advert;
 use OC\PlatformBundle\Entity\Image;
 use OC\PlatformBundle\Entity\Application;
 use OC\PlatformBundle\Entity\AdvertSkill;
+use Symfony\Component\HttpFoundation\Response;
 
 // use Symfony\Component\Validator\Constraints\DateTime;
 //use Symfony\Component\Validator\Constraints\Date;
@@ -93,7 +94,7 @@ class AdvertController extends Controller {
         ));
     }
 
-    /** http://localhost/OpenclassroomsSYMFONY/symfony2Doctrine/web/app_dev.php/platform/add platform++++*/
+    /** http://localhost/OpenclassroomsSYMFONY/symfony2Doctrine/web/app_dev.php/platform/add platform++++ */
     public function addAction(Request $request) {
         // On récupère l'EntityManager
         $em = $this->getDoctrine()->getManager();
@@ -103,14 +104,14 @@ class AdvertController extends Controller {
         $advert->setTitle('Recherche développeur Symfony.');
         $advert->setAuthor('Alexandre');
         $advert->setContent("Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…");
-       // $advert->sete
+        // $advert->sete
         //moi
         $cat = new \OC\PlatformBundle\Entity\Category;
         $cat->setName("Développeur");
         $advert->addCategory($cat);
- $advert->setEmail("mouezapeter@gmail.com");
+        $advert->setEmail("mouezapeter@gmail.com");
 
- 
+
         $advert2 = new Advert();
         $advert2->setTitle('search développeur Symfony. intégrateur');
         $advert2->setAuthor('Alexandre');
@@ -122,29 +123,41 @@ class AdvertController extends Controller {
         $cat2->setName("Intégrateur");
         $advert2->addCategory($cat);
         $advert2->addCategory($cat2);
- $advert2->setEmail("mouezapeter@gmail.com");
-
- 
-$app1=new Application();$app1->setContent("Je suis debutant");$app1->setAuthor("Peter");
-$date1=new \DateTime();$date1->setDate(2016,01,01);
-$app1->setDate($date1);
-$app1->setAdvert($advert);
-
-$app2=new Application();$app2->setContent("Je suis expert");$app2->setAuthor("Peter");
-$date2=new \DateTime();$date1->setDate(2016,02,01);
-$app2->setDate($date2);
-$app2->setAdvert($advert);
+        $advert2->setEmail("mouezapeter@gmail.com");
 
 
-$app3=new Application();$app3->setContent("Je suis neo");$app3->setAuthor("Peter");
-$date3=new \DateTime();$date3->setDate(2016,01,31);
-$app3->setDate($date3);
-$app3->setAdvert($advert2);
+        $app1 = new Application();
+        $app1->setContent("Je suis debutant");
+        $app1->setAuthor("Peter");
+        $date1 = new \DateTime();
+        $date1->setDate(2016, 01, 01);
+        $app1->setDate($date1);
+        $app1->setAdvert($advert);
 
-$app4=new Application();$app4->setContent("Je suis junior");$app4->setAuthor("Pit");
-$date4=new \DateTime();$date4->setDate(2016,12,01);//http://stackoverflow.com/questions/32607641/set-datetime-and-time-in-symfony2-from-string
-$app4->setDate($date4);
-$app4->setAdvert($advert2);
+        $app2 = new Application();
+        $app2->setContent("Je suis expert");
+        $app2->setAuthor("Peter");
+        $date2 = new \DateTime();
+        $date1->setDate(2016, 02, 01);
+        $app2->setDate($date2);
+        $app2->setAdvert($advert);
+
+
+        $app3 = new Application();
+        $app3->setContent("Je suis neo");
+        $app3->setAuthor("Peter");
+        $date3 = new \DateTime();
+        $date3->setDate(2016, 01, 31);
+        $app3->setDate($date3);
+        $app3->setAdvert($advert2);
+
+        $app4 = new Application();
+        $app4->setContent("Je suis junior");
+        $app4->setAuthor("Pit");
+        $date4 = new \DateTime();
+        $date4->setDate(2016, 12, 01); //http://stackoverflow.com/questions/32607641/set-datetime-and-time-in-symfony2-from-string
+        $app4->setDate($date4);
+        $app4->setAdvert($advert2);
 
 
 
@@ -173,7 +186,10 @@ $app4->setAdvert($advert2);
         // avec un cascade persist (ce qui est le cas si vous avez utilisé mon code), alors on doit persister $advert
         $em->persist($advert);
         $em->persist($advert2);
-$em->persist($app1);$em->persist($app2);$em->persist($app3);$em->persist($app4);
+        $em->persist($app1);
+        $em->persist($app2);
+        $em->persist($app3);
+        $em->persist($app4);
 
         // On déclenche l'enregistrement
         $em->flush();
@@ -401,6 +417,28 @@ $em->persist($app1);$em->persist($app2);$em->persist($app3);$em->persist($app4);
                     'm' => $m,
                     'getmem' => $getmem,
                     'exists' => $exists));
+    }
+
+    public function testAction() {
+
+        $advert = new Advert();
+
+        $advert->setTitle("Recherche développeur !");
+        $advert->setAuthor("Sogeti"); //moi
+
+        $advert->setContent("notre societe...vous bac+5"); //moi
+        $advert->setEmail("mouezapeter@gmail.com");
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($advert);
+
+        $em->flush(); // C'est à ce moment qu'est généré le slug
+
+
+        return new Response('Slug généré : ' . $advert->getSlug());
+
+        // Affiche « Slug généré : recherche-developpeur »
     }
 
 }

@@ -5,6 +5,9 @@ namespace OC\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Gedmo\Mapping\Annotation as Gedmo;//https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony/les-evenements-et-extensions-doctrine-1
+
+
 /**
  * Advert
  *
@@ -409,5 +412,37 @@ private $updatedAt;
     public function getEmail()
     {
         return $this->email;
+    }
+    
+    
+    
+      /**
+   * @Gedmo\Slug(fields={"title"})
+   * @ORM\Column(name="slug", type="string", length=255, unique=true)
+   */
+  private $slug;
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Advert
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

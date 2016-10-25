@@ -87,3 +87,8 @@ poubadd:
     defaults:
         _controller: OCPlatformBundle:Advert:poubadd
 
+test:
+    path:      /test
+    defaults:
+        _controller: OCPlatformBundle:Advert:test
+
