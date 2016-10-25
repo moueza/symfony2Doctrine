@@ -93,6 +93,7 @@ class AdvertController extends Controller {
         ));
     }
 
+    /** http://localhost/OpenclassroomsSYMFONY/symfony2Doctrine/web/app_dev.php/platform/add platform++++*/
     public function addAction(Request $request) {
         // On récupère l'EntityManager
         $em = $this->getDoctrine()->getManager();
@@ -107,8 +108,9 @@ class AdvertController extends Controller {
         $cat = new \OC\PlatformBundle\Entity\Category;
         $cat->setName("Développeur");
         $advert->addCategory($cat);
+ $advert->setEmail("mouezapeter@gmail.com");
 
-
+ 
         $advert2 = new Advert();
         $advert2->setTitle('search développeur Symfony. intégrateur');
         $advert2->setAuthor('Alexandre');
@@ -120,8 +122,9 @@ class AdvertController extends Controller {
         $cat2->setName("Intégrateur");
         $advert2->addCategory($cat);
         $advert2->addCategory($cat2);
+ $advert2->setEmail("mouezapeter@gmail.com");
 
-
+ 
 $app1=new Application();$app1->setContent("Je suis debutant");$app1->setAuthor("Peter");
 $date1=new \DateTime();$date1->setDate(2016,01,01);
 $app1->setDate($date1);
