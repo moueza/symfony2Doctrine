@@ -24,10 +24,14 @@ class ApplicationMailer {
                 'Nouvelle candidature', 'Vous avez reçu une nouvelle candidature.'
         );
 
+//TODO
+//        $message
+//                ->addTo($application->getAdvert()->getAuthor()) // Ici bien sûr il faudrait un attribut "email", j'utilise "author" à la place
+//                ->addFrom('admin@votresite.com')
 
-        $message
-                ->addTo($application->getAdvert()->getAuthor()) // Ici bien sûr il faudrait un attribut "email", j'utilise "author" à la place
-                ->addFrom('admin@votresite.com')
+                   $message
+                ->addTo($application->getAdvert()->getEmail()) // Ici bien sûr il faudrait un attribut "email", j'utilise "author" à la place
+                ->addFrom('mouezapeter@gmail.com')
 
         ;
 
